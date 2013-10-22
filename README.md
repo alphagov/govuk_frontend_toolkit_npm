@@ -1,5 +1,6 @@
 To update:
 
+```
 git submodule update
 commit the changes to the files, don't push
 npm version <version number>
