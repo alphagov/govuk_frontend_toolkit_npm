@@ -24,26 +24,22 @@ git submodule init
 
 Follow the [contribution guidelines](https://github.com/alphagov/govuk_frontend_toolkit_npm/blob/master/CONTRIBUTING.md).
 
-To update this package with changes from the source repo:
+To update this package, update the submodule:
 
 ```
+git submodule init
 git submodule update
+cd govuk_frontend_toolkit
+git pull origin master
+cd ..
 ```
 
-Commit the changes to the files, don't push yet. Now run:
+Then update the version in `package.json` and commit the result.
 
-```
-npm version <version number> -m "Update NPM package to %s"
-```
-
-Ensure the version number is quoted. The `%s` chars will be replaced in the commit message with the version number. 
-
-This command will generate a git commit so you should now have two new commits in total. Now push those commits:
+In your commit message, briefly summarise the changes since the last npm version. Then:
 
 ```
 git push origin master
 ```
 
-You can then publish changes to npmjs.org by running the job `npm_publish_govuk_frontend_toolkit_npm`
-on Jenkins CI.
-
+The job to publish an updated version to npmjs.org will run automatically when master is updated.
