@@ -1,6 +1,6 @@
 {
   "name": "govuk_frontend_toolkit",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "npm for govuk_frontend_toolkit",
   "main": "index.js",
   "scripts": {
