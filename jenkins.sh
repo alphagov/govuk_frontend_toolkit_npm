@@ -10,13 +10,13 @@ git reset --hard origin/master
 git submodule update --init
 
 # The version of the toolkit defined by the pinned submodule
-PINNED_SUBMODULE_VERSION=`cat app/assets/VERSION.txt`
+PINNED_SUBMODULE_VERSION=`cat govuk_frontend_toolkit/VERSION.txt`
 
 # Force the submodule to pull the latest and checkout origin/master
 git submodule foreach git pull origin master
 
 # The version of the toolkit defined in the submodules master branch
-NEW_SUBMODULE_VERSION=`cat app/assets/VERSION.txt`
+NEW_SUBMODULE_VERSION=`cat govuk_frontend_toolkit/VERSION.txt`
 
 # If the submodule has a new version string
 if [ "$PINNED_SUBMODULE_VERSION" != "$NEW_SUBMODULE_VERSION" ]; then
