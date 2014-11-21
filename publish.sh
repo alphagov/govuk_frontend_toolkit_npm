@@ -4,6 +4,11 @@ set -e
 # This script runs on every push to master of the toolkit. It downloads a tarball
 # of the toolkit from GitHub.
 
+# Checkout master as Jenkins checks out an individual commit on a detached tree.
+# This means when we commit later it will be on a branch
+git checkout master
+git reset --hard origin/master
+
 wget https://github.com/alphagov/govuk_frontend_toolkit/archive/master.tar.gz -O new-toolkit.tar.gz
 
 tar -xzf new-toolkit.tar.gz
