@@ -1,6 +1,11 @@
-# GOV.UK Frontend Toolkit
+# GOV.UK frontend toolkit npm package
 
-This is an NPM package for [alphagov/govuk_frontend_toolkit](https://github.com/alphagov/govuk_frontend_toolkit)
+This is an npm package for [the GOV.UK frontend toolkit][toolkit].
+It bundles up the toolkit and publishes [govuk_frontend_toolkit on the npmjs registry][npmjs]
+so that you can install it as a dependency in your JavaScript application.
+
+[toolkit]: https://github.com/alphagov/govuk_frontend_toolkit
+[npmjs]: https://www.npmjs.org/package/govuk_frontend_toolkit
 
 ## Installing
 
@@ -10,36 +15,14 @@ Include `govuk_frontend_toolkit` in your `package.json` along with a version, an
 npm install
 ```
 
-## Managing this package
+## Updating this package
 
-### Set up
+This package is updated automatically by a job on GDS' continuous integration server whenever
+the `VERSION.txt` file in the toolkit changes.
 
-Checkout this repo and run:
+All development of the toolkit should happen [upstream][toolkit] and changes will then become
+available in this package.
 
-```
-git submodule init
-```
+## Licence
 
-### Updating
-
-Follow the [contribution guidelines](https://github.com/alphagov/govuk_frontend_toolkit_npm/blob/master/CONTRIBUTING.md).
-
-To update this package, update the submodule:
-
-```
-git submodule init
-git submodule update
-cd govuk_frontend_toolkit
-git pull origin master
-cd ..
-```
-
-Then update the version in `package.json` and commit the result.
-
-In your commit message, briefly summarise the changes since the last npm version. Then:
-
-```
-git push origin master
-```
-
-The job to publish an updated version to npmjs.org will run automatically when master is updated.
+[MIT License](LICENCE)
