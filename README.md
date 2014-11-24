@@ -9,11 +9,13 @@ so that you can install it as a dependency in your JavaScript application.
 
 ## Installing
 
-Include `govuk_frontend_toolkit` in your `package.json` along with a version, and run:
+To include the toolkit in your project run:
 
 ```
-npm install
+npm install --save govuk_frontend_toolkit
 ```
+
+This will install the toolkit inside your node_modules and will add the package to you package.json.
 
 ## Updating this package
 
