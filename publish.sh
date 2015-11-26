@@ -20,10 +20,13 @@ rm -f package.json
 
 # Toolkit development happens in a separate repository, so remove dev and docs-related things
 rm -f README.md
+rm -rf docs
 rm -rf spec
 rm -f CONTRIBUTING.md
 rm -f Gruntfile.js
 rm -f jenkins.sh
+rm -f Gemfile
+rm -f Gemfile.lock
 
 # Move the actual toolkit files into the repo where this script is
 rsync -a * ..
