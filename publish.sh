@@ -9,7 +9,7 @@ set -e
 git checkout master
 git reset --hard origin/master
 
-wget https://github.com/alphagov/govuk_frontend_toolkit/archive/master.tar.gz -O new-toolkit.tar.gz
+wget https://github.com/alphagov/govuk_frontend_toolkit/archive/$TAG_FILENAME.tar.gz -O new-toolkit.tar.gz
 
 tar -xzf new-toolkit.tar.gz
 
@@ -20,10 +20,13 @@ rm -f package.json
 
 # Toolkit development happens in a separate repository, so remove dev and docs-related things
 rm -f README.md
+rm -rf docs
 rm -rf spec
 rm -f CONTRIBUTING.md
 rm -f Gruntfile.js
 rm -f jenkins.sh
+rm -f Gemfile
+rm -f Gemfile.lock
 
 # Move the actual toolkit files into the repo where this script is
 rsync -a * ..
