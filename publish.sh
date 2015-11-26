@@ -44,8 +44,8 @@ if [ "$VERSION_LATEST" != "$VERSION_REGISTRY" ]; then
   npm version $VERSION_LATEST
   git reset --soft HEAD~2
   git commit -am "Bump npm version of govuk_frontend_toolkit to $VERSION_LATEST"
-  git push origin master
   npm publish
+  git push origin master
 else
   echo 'VERSION.txt is the same as the version available on the registry'
   echo 'Not publishing anything'
