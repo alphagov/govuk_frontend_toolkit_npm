@@ -9,7 +9,7 @@ set -e
 git checkout master
 git reset --hard origin/master
 
-wget https://github.com/alphagov/govuk_frontend_toolkit/archive/master.tar.gz -O new-toolkit.tar.gz
+wget https://github.com/alphagov/govuk_frontend_toolkit/archive/$TAG_FILENAME.tar.gz -O new-toolkit.tar.gz
 
 tar -xzf new-toolkit.tar.gz
 
