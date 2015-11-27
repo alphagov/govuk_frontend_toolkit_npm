@@ -19,8 +19,14 @@ This will install the toolkit inside your node_modules and will add the package 
 
 ## Updating this package
 
-This package is updated automatically by a job on GDS' continuous integration server whenever
+This package is updated automatically by a job on a GDS continuous integration (CI) server whenever
 the `VERSION.txt` file in the toolkit changes.
+
+The CI server is configured to authenticate with npm using an `.npmrc` file. The file is templated
+in [ci-puppet][] and the credentials are passed in from [ci-deployment][].
+
+[ci-puppet]: https://github.com/alphagov/ci-puppet
+[ci-deployment]: https://github.gds/gds/ci-deployment
 
 All development of the toolkit should happen [upstream][toolkit] and changes will then become
 available in this package.
