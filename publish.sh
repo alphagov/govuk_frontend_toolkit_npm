@@ -4,8 +4,7 @@ set -e
 # This script runs on every push to master of the toolkit. It downloads a tarball
 # of the toolkit from GitHub.
 
-# Checkout master as Jenkins checks out an individual commit on a detached tree.
-# This means when we commit later it will be on a branch
+# Make sure we're building the right thing in Travis
 git checkout master
 git reset --hard origin/master
 
@@ -44,8 +43,7 @@ if [ "$VERSION_LATEST" != "$VERSION_REGISTRY" ]; then
   npm version $VERSION_LATEST
   git reset --soft HEAD~2
   git commit -am "Bump npm version of govuk_frontend_toolkit to $VERSION_LATEST"
-  npm publish
-  git push origin master
+  git push origin_ssh master
 else
   echo 'VERSION.txt is the same as the version available on the registry'
   echo 'Not publishing anything'
