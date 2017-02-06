@@ -39,7 +39,10 @@ VERSION_LATEST=`cat VERSION.txt`
 VERSION_REGISTRY=`npm view govuk_frontend_toolkit version`
 
 if [ "$VERSION_LATEST" != "$VERSION_REGISTRY" ]; then
-  git commit -am "Temporary commit: new toolkit files"
+  git add -A
+  git rm push.sh
+  git rm trigger.sh
+  git commit -m "Temporary commit: new toolkit files"
   npm version $VERSION_LATEST
   git reset --soft HEAD~2
   git commit -am "Bump npm version of govuk_frontend_toolkit to $VERSION_LATEST"
