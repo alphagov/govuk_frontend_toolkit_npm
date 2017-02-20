@@ -39,6 +39,7 @@ VERSION_LATEST=`cat VERSION.txt`
 VERSION_REGISTRY=`npm view govuk_frontend_toolkit version`
 
 if [ "$VERSION_LATEST" != "$VERSION_REGISTRY" ]; then
+  git add -u
   git add -A
   git rm push.sh
   git rm trigger.sh
