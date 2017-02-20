@@ -27,11 +27,16 @@ rm -f jenkins.sh
 rm -f Gemfile
 rm -f Gemfile.lock
 
+# Remove Travis-related scripts 
+rm push.sh
+rm trigger.sh
+
 # Move the actual toolkit files into the repo where this script is
 rsync -a * ..
 
 cd ..
 
+# Remove govuk_frontend_toolkit directory and tar
 rm -r govuk_frontend_toolkit-master
 rm new-toolkit.tar.gz
 
@@ -39,7 +44,9 @@ VERSION_LATEST=`cat VERSION.txt`
 VERSION_REGISTRY=`npm view govuk_frontend_toolkit version`
 
 if [ "$VERSION_LATEST" != "$VERSION_REGISTRY" ]; then
-  git commit -am "Temporary commit: new toolkit files"
+  git add -u
+  git add -A
+  git commit -m "Temporary commit: new toolkit files"
   npm version $VERSION_LATEST
   git reset --soft HEAD~2
   git commit -am "Bump npm version of govuk_frontend_toolkit to $VERSION_LATEST"
