@@ -15,6 +15,7 @@ script:
   - ./publish.sh
 deploy:
   provider: npm
+  emai: govuk-dev@digital.cabinet-office.gov.uk
   api_key:
     secure: lQumjzh4nXch5pVm3KopTlso+PBLAiEhiq1mLmp7Au2L5KnRI06FiLwoBEgDodDMPA6XHdd2Yhrzs8hlufgIYtcJOwfGbv2uTz/kOgXkdpjsUOpQgekZ1wTKNjBdJEmHX9AGhwckfvi5y14bRNQYUyXNpv75MC4xph/pbImKt3w=
   on:
