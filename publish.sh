@@ -48,14 +48,15 @@ VERSION_LATEST=`cat VERSION.txt`
 VERSION_REGISTRY=`npm view govuk_frontend_toolkit version`
 
 if [ "$VERSION_LATEST" != "$VERSION_REGISTRY" ]; then
+  # Update `package.json` version field, without creating it's own commit or tag
+  # https://docs.npmjs.com/cli/version
+  npm version --no-git-tag-version $VERSION_LATEST
+
   # Adds, modifies, and removes index entries to match the working tree.
   # https://git-scm.com/docs/git-add#git-add--A
   git add --all
 
-  git commit -m "Temporary commit: new toolkit files"
-  npm version $VERSION_LATEST
-  git reset --soft HEAD~2
-  git commit -am "Bump npm version of govuk_frontend_toolkit to $VERSION_LATEST"
+  git commit -m "Bump npm version of govuk_frontend_toolkit to $VERSION_LATEST"
   git push origin_ssh master
 else
   echo 'VERSION.txt is the same as the version available on the registry'
