@@ -110,9 +110,8 @@
       if (!$el.hasClass('content-fixed')) {
         $el.data('scrolled-from', sticky.getElementOffset($el).top)
         var height = Math.max($el.height(), 1)
-        var width = $el.width()
-        $el.before('<div class="shim" style="width: ' + width + 'px; height: ' + height + 'px">&nbsp;</div>')
-        $el.css('width', width + 'px').addClass('content-fixed')
+        $el.before('<div class="shim" style="width: ' + $el.width() + 'px; height: ' + height + 'px">&nbsp;</div>')
+        $el.css('width', $el.width() + 'px').addClass('content-fixed')
       }
     },
     release: function ($el) {
