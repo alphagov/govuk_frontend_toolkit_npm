@@ -23,12 +23,21 @@ rm -rf docs
 rm -rf spec
 rm -f CONTRIBUTING.md
 rm -f Gruntfile.js
-rm -f jenkins.sh
 rm -f Gemfile
 rm -f Gemfile.lock
+rm -f push.sh
+rm -f trigger.sh
 
 # Move the actual toolkit files into the repo where this script is
-rsync -a * ..
+# --delete:  delete extraneous files from dest dir
+# --archive: preserves permissions, times, symbolic links, etc
+
+# Note: src of `*` is different from `.`, especially for delete!
+# - `*` expands to each file/dir in src, which are rsync'd individually. A file that exists in dest
+#   but not src won't be deleted. This is the behaviour we want.
+# - `.` copies the directory in one go, deleting ANY files in dest that are not in src, which will
+#   delete key files in this repo - like `package.json`, even `.git/`
+rsync --delete --archive * ..
 
 cd ..
 
@@ -39,10 +48,15 @@ VERSION_LATEST=`cat VERSION.txt`
 VERSION_REGISTRY=`npm view govuk_frontend_toolkit version`
 
 if [ "$VERSION_LATEST" != "$VERSION_REGISTRY" ]; then
-  git commit -am "Temporary commit: new toolkit files"
-  npm version $VERSION_LATEST
-  git reset --soft HEAD~2
-  git commit -am "Bump npm version of govuk_frontend_toolkit to $VERSION_LATEST"
+  # Update `package.json` version field, without creating it's own commit or tag
+  # https://docs.npmjs.com/cli/version
+  npm version --no-git-tag-version $VERSION_LATEST
+
+  # Adds, modifies, and removes index entries to match the working tree.
+  # https://git-scm.com/docs/git-add#git-add--A
+  git add --all
+
+  git commit -m "Bump npm version of govuk_frontend_toolkit to $VERSION_LATEST"
   git push origin_ssh master
 else
   echo 'VERSION.txt is the same as the version available on the registry'

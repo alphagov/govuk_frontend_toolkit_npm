@@ -1,1 +1,4 @@
-/publish.sh
+publish.sh
+.travis/
+.travis.yml
+VERSION.txt
