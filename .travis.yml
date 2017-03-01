@@ -9,8 +9,6 @@ before_install:
   - git config --global user.name "Travis CI"
   - git config --global user.email "travis@travis-ci.org"
   - git remote add origin_ssh git@github.com:alphagov/govuk_frontend_toolkit_npm.git
-install:
-  - echo "No dependencies to install"
 script:
   - ./publish.sh
 deploy:
