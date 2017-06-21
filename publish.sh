@@ -27,6 +27,7 @@ rm -f Gemfile
 rm -f Gemfile.lock
 rm -f push.sh
 rm -f trigger.sh
+rm -f create-release.sh
 
 # Move the actual toolkit files into the repo where this script is
 # --delete:  delete extraneous files from dest dir
