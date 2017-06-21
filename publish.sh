@@ -56,8 +56,15 @@ cd ..
 rm -r govuk_frontend_toolkit-master
 rm new-toolkit.tar.gz
 
+echo "Check to see if the version file has been updated"
+
+# get the version from the version file
 VERSION_LATEST=`cat VERSION.txt`
+echo "Version in VERSION.txt: $VERSION_LATEST"
+
+# get the version from npm
 VERSION_REGISTRY=`npm view govuk_frontend_toolkit version`
+echo "Version of npm package: $VERSION_REGISTRY"
 
 if [ "$VERSION_LATEST" != "$VERSION_REGISTRY" ]; then
   # Update `package.json` version field, without creating it's own commit or tag
