@@ -1,6 +1,17 @@
 #!/bin/sh
 set -e
 
+REPO_PATH="alphagov/govuk_frontend_toolkit_npm"
+
+echo "Add config for alphagov/$REPO_PATH"
+
+git config --global user.name "GOV.UK Patterns & Tools CI User"
+git config --global user.email "patterns-and-tools-github-user@digital.cabinet-office.gov.uk"
+git remote add origin_ssh git@github.com:$REPO_PATH.git
+
+openssl aes-256-cbc -K $encrypted_6c266e67b443_key -iv $encrypted_6c266e67b443_iv -in .travis/govuk_frontend_toolkit_npm_push.enc -out ~/.ssh/id_rsa -d
+chmod 600 ~/.ssh/id_rsa
+
 # This script runs on every push to master of the toolkit. It downloads a tarball
 # of the toolkit from GitHub.
 
@@ -45,8 +56,15 @@ cd ..
 rm -r govuk_frontend_toolkit-master
 rm new-toolkit.tar.gz
 
+echo "Check to see if the version file has been updated"
+
+# get the version from the version file
 VERSION_LATEST=`cat VERSION.txt`
+echo "Version in VERSION.txt: $VERSION_LATEST"
+
+# get the version from npm
 VERSION_REGISTRY=`npm view govuk_frontend_toolkit version`
+echo "Version of npm package: $VERSION_REGISTRY"
 
 if [ "$VERSION_LATEST" != "$VERSION_REGISTRY" ]; then
   # Update `package.json` version field, without creating it's own commit or tag
