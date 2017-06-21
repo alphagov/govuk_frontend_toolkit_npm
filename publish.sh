@@ -51,7 +51,7 @@ VERSION_REGISTRY=`npm view govuk_frontend_toolkit version`
 if [ "$VERSION_LATEST" != "$VERSION_REGISTRY" ]; then
   # Update `package.json` version field, without creating it's own commit or tag
   # https://docs.npmjs.com/cli/version
-  npm version --no-git-tag-version $VERSION_LATEST
+  npm version -f --no-git-tag-version $VERSION_LATEST
 
   # Adds, modifies, and removes index entries to match the working tree.
   # https://git-scm.com/docs/git-add#git-add--A
