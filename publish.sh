@@ -1,6 +1,17 @@
 #!/bin/sh
 set -e
 
+REPO_PATH="alphagov/govuk_frontend_toolkit_npm"
+
+echo "Add config for alphagov/$REPO_PATH"
+
+git config --global user.name "GOV.UK Patterns & Tools CI User"
+git config --global user.email "patterns-and-tools-github-user@digital.cabinet-office.gov.uk"
+git remote add origin_ssh git@github.com:$REPO_PATH.git
+
+openssl aes-256-cbc -K $encrypted_6c266e67b443_key -iv $encrypted_6c266e67b443_iv -in .travis/govuk_frontend_toolkit_npm_push.enc -out ~/.ssh/id_rsa -d
+chmod 600 ~/.ssh/id_rsa
+
 # This script runs on every push to master of the toolkit. It downloads a tarball
 # of the toolkit from GitHub.
 
