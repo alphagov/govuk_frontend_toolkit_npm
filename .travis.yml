@@ -3,6 +3,7 @@ sudo: false
 branches:
   only:
   - master
+  - npm-debug
 before_install:
 - openssl aes-256-cbc -K $encrypted_6c266e67b443_key -iv $encrypted_6c266e67b443_iv
   -in .travis/govuk_frontend_toolkit_npm_push.enc -out ~/.ssh/id_rsa -d
@@ -21,3 +22,6 @@ deploy:
     secure: gaYyBRr6M6E2ptNDKSKs/R8SMF+WcIOKao6EGpZj6iZY+rjCrfg0Kd5xFo0BsptQ9+8ZFcIfUNY2RpmgrQejrpZ88FsiA3235mY2ugKNg+oyigYq0+dY4cfSXcNvogPz/p53+5M+8oVBHfCCfh2qEt4zRA/4MBfOROgAnjWtCH4=
   on:
     branch: master
+    branch: npm-debug
+after_deploy:
+  - npm whoami
