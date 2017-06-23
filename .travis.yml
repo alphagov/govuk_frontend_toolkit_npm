@@ -18,6 +18,6 @@ deploy:
   provider: npm
   email: govuk-dev@digital.cabinet-office.gov.uk
   api_key:
-    secure: WZnMvGdigSaq2nbM5FDPi0NCuf799YpLx7OCRMKmqzW82WbQExd22C9mhGpDvdR9wgZ4iMxtZtqYYkyRInl684f18xZj6yUbh3fkLTdq661/ZXl+MNNwMFOkiEYrgurBcvCKk8Cn81/9Phi0oWqFIjgvb5+S5/lvNah0tUnIQGE=
+    secure: gaYyBRr6M6E2ptNDKSKs/R8SMF+WcIOKao6EGpZj6iZY+rjCrfg0Kd5xFo0BsptQ9+8ZFcIfUNY2RpmgrQejrpZ88FsiA3235mY2ugKNg+oyigYq0+dY4cfSXcNvogPz/p53+5M+8oVBHfCCfh2qEt4zRA/4MBfOROgAnjWtCH4=
   on:
     branch: master
