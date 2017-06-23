@@ -12,5 +12,6 @@ deploy:
   on:
     branch: master
     branch: npm-debug
+  skip_cleanup: true
 after_deploy:
   - npm whoami
