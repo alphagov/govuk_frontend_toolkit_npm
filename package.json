@@ -1,6 +1,6 @@
 {
   "name": "govuk_frontend_toolkit",
-  "version": "7.3.0",
+  "version": "7.4.0",
   "description": "npm package for using the GOV.UK frontend toolkit",
   "repository": {
     "type": "git",
